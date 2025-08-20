@@ -1,0 +1,86 @@
+---
+name: Get Poetry Info
+description: Extracts Poetry information from pyproject.toml
+outputs:
+  name:
+    description: Package name
+    value: ${{ steps.extract.outputs.name }}
+  version:
+    description: Package version
+    value: ${{ steps.extract.outputs.version }}
+  python:
+    description: Python version requirement
+    value: ${{ steps.extract.outputs.python }}
+  poetry_version:
+    description: Poetry version requirement
+    value: ${{ steps.extract.outputs.poetry_version }}
+  authors:
+    description: Author(s)
+    value: ${{ steps.extract.outputs.authors }}
+  license:
+    description: License
+    value: ${{ steps.extract.outputs.license }}
+  description:
+    description: Project description
+    value: ${{ steps.extract.outputs.description }}
+  homepage:
+    description: Homepage URL
+    value: ${{ steps.extract.outputs.homepage }}
+  repository:
+    description: Repository URL
+    value: ${{ steps.extract.outputs.repository }}
+  documentation:
+    description: Documentation URL
+    value: ${{ steps.extract.outputs.documentation }}
+  classifiers:
+    description: List of classifiers
+    value: ${{ steps.extract.outputs.classifiers }}
+runs:
+  using: composite
+  steps:
+    - id: extract
+      shell: bash
+      run: |-
+        NAME="haive"
+        VERSION="0.1.0"
+        PYTHON_VERSION="3.12"
+        POETRY_VERSION="1.8.0"
+        AUTHORS=""
+        LICENSE=""
+        DESCRIPTION=""
+        HOMEPAGE=""
+        REPOSITORY=""
+        DOCUMENTATION=""
+        CLASSIFIERS=""
+        echo "Current directory: $(pwd)"
+        echo "Looking for pyproject.toml"
+        if [ -f "pyproject.toml" ]; then
+          NAME=$(grep -E '^name\s*=' pyproject.toml | head -n1 | cut -d'"' -f2 || echo "haive")
+          VERSION=$(grep -E '^version\s*=' pyproject.toml | head -n1 | cut -d'"' -f2 || echo "0.1.0")
+          PY_CONSTRAINT=$(grep -E 'python\s*=' pyproject.toml | head -n1)
+          if [[ "$PY_CONSTRAINT" =~ ([0-9]+\.[0-9]+) ]]; then
+            PYTHON_VERSION="${BASH_REMATCH[1]}"
+          fi
+          if grep -q "poetry-core" pyproject.toml; then
+            if [[ $(grep "poetry-core" pyproject.toml) =~ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+              POETRY_VERSION="${BASH_REMATCH[1]}"
+            fi
+          fi
+          AUTHORS=$(grep -E '^authors\s*=' pyproject.toml | cut -d'[' -f2 | tr -d '"]' | xargs || echo "")
+          LICENSE=$(grep -E '^license\s*=' pyproject.toml | cut -d'"' -f2 || echo "")
+          DESCRIPTION=$(grep -E '^description\s*=' pyproject.toml | cut -d'"' -f2 || echo "")
+          HOMEPAGE=$(grep -E '^homepage\s*=' pyproject.toml | cut -d'"' -f2 || echo "")
+          REPOSITORY=$(grep -E '^repository\s*=' pyproject.toml | cut -d'"' -f2 || echo "")
+          DOCUMENTATION=$(grep -E '^documentation\s*=' pyproject.toml | cut -d'"' -f2 || echo "")
+          CLASSIFIERS=$(grep -A 20 '\[tool.poetry\]' pyproject.toml | grep -A 20 'classifiers\s*=' | grep '"' | cut -d'"' -f2 | tr '\n' ',' | sed 's/,$//' || echo "")
+        else
+          echo "Warning: pyproject.toml not found. Using default values."
+        fi
+
+        # Write to outputs
+        for var in NAME VERSION PYTHON_VERSION POETRY_VERSION AUTHORS LICENSE DESCRIPTION HOMEPAGE REPOSITORY DOCUMENTATION CLASSIFIERS; do
+          key=$(echo "$var" | tr '[:upper:]' '[:lower:]')
+          val="${!var}"
+          echo "$key=$val" >> "$GITHUB_OUTPUT"
+          echo "$key=$val" >> "$GITHUB_ENV"
+        done

@@ -1,0 +1,43 @@
+---
+name: Get Root Poetry Info
+description: Extracts Poetry information from root project
+outputs:
+  python:
+    description: Python version from root Poetry config
+    value: ${{ steps.extract.outputs.python }}
+  poetry_version:
+    description: Poetry version from root Poetry config
+    value: ${{ steps.extract.outputs.poetry_version }}
+runs:
+  using: composite
+  steps:
+    - id: extract
+      shell: bash
+      run: |-
+        # Default values
+        PYTHON_VERSION="3.12"
+        POETRY_VERSION="1.8.0"
+        if [ -f "pyproject.toml" ]; then
+          # Extract Python version
+          if grep -q "python =" "pyproject.toml"; then
+            PY_CONSTRAINT=$(grep "python =" "pyproject.toml" | head -n 1)
+            if [[ "$PY_CONSTRAINT" =~ ([0-9]+\.[0-9]+) ]]; then
+              PYTHON_VERSION="${BASH_REMATCH[1]}"
+            fi
+          fi
+
+          # Extract Poetry version from build-system
+          if grep -q "poetry-core" "pyproject.toml"; then
+            if [[ $(grep "poetry-core" "pyproject.toml") =~ poetry-core([><=~]+)([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+              POETRY_VERSION="${BASH_REMATCH[2]}"
+            fi
+          fi
+        fi
+
+        # Set outputs
+        echo "python=$PYTHON_VERSION" >> $GITHUB_OUTPUT
+        echo "poetry_version=$POETRY_VERSION" >> $GITHUB_OUTPUT
+
+        # Set environment variables
+        echo "python=$PYTHON_VERSION" >> $GITHUB_ENV
+        echo "poetry_version=$POETRY_VERSION" >> $GITHUB_ENV

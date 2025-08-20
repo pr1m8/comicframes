@@ -1,0 +1,78 @@
+---
+name: Auto-update tooling
+on:
+  schedule:
+    - cron: "0 2 * * 1" # Weekly on Monday at 2 AM UTC
+  workflow_dispatch: # Allow manual runs
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{ python_min_minor }}"
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync --all-groups
+
+      - name: Install Trunk
+        uses: trunk-io/trunk-action@v1
+        with:
+          check-mode: false
+
+      - name: Update pre-commit hooks
+        run: |
+          uv run pre-commit autoupdate
+          echo "PRE_COMMIT_UPDATED=$(git diff --name-only .pre-commit-config.yaml | wc -l)" >> $GITHUB_ENV
+
+      - name: Update Trunk
+        run: |
+          trunk upgrade --yes
+          echo "TRUNK_UPDATED=$(git diff --name-only .trunk/trunk.yaml | wc -l)" >> $GITHUB_ENV
+
+      - name: Update Python dependencies
+        run: |
+          uv lock --upgrade
+          echo "UV_UPDATED=$(git diff --name-only uv.lock | wc -l)" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        if: env.PRE_COMMIT_UPDATED != '0' || env.TRUNK_UPDATED != '0' || env.UV_UPDATED != '0'
+        uses: peter-evans/create-pull-request@v7.0.8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update/tooling-autoupdate
+          title: "chore: auto-update development tooling"
+          commit-message: |
+            chore: auto-update development tooling
+
+            - Updated pre-commit hooks
+            - Updated Trunk configuration  
+            - Updated Python dependencies
+          body: |
+            ## 🤖 Automated Tooling Update
+
+            This PR updates development tooling to the latest versions:
+
+            ### Changes:
+            - **Pre-commit hooks**: ${{ env.PRE_COMMIT_UPDATED > 0 && '✅ Updated' || '⏭️ No changes' }}
+            - **Trunk linters**: ${{ env.TRUNK_UPDATED > 0 && '✅ Updated' || '⏭️ No changes' }}  
+            - **Python deps**: ${{ env.UV_UPDATED > 0 && '✅ Updated' || '⏭️ No changes' }}
+
+            Please review and merge if tests pass.
+          labels: |
+            dependencies
+            chore
+            automated

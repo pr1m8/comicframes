@@ -1,0 +1,17 @@
+---
+version: 2
+updates:
+  # 🔁 GitHub Actions workflow updates (e.g. ruff, setup-python)
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+
+  # 📦 UV-managed Python dependencies
+  - package-ecosystem: uv
+    directory: / # root where pyproject.toml lives
+    schedule:
+      interval: weekly
+    groups:
+      python-deps:
+        patterns: ["*"]

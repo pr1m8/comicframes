@@ -1,0 +1,37 @@
+---
+name: Docs Build
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  docs:
+    name: Build Sphinx Docs on ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_DEBUG || 'false' }}
+    steps:
+      - name: 📥 Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.GH_TOKEN }}
+      - name: 📦 Get Poetry Metadata
+        id: poetry
+        uses: ./.github/actions/get-poetry-info
+      - name: 🐍 Set up Python ${{ steps.poetry.outputs.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.poetry.outputs.python }}
+      - name: 🔧 Install Poetry and Nox
+        run: |
+          pipx install poetry==${{ steps.poetry.outputs.poetry_version }}
+          pip install nox
+          poetry install --with dev --no-interaction
+      - name: 🏗️ Build Docs via Nox
+        run: |-
+          echo "🧾 Building docs for ${{ steps.poetry.outputs.name }} v${{ steps.poetry.outputs.version }}"
+          nox -s docs

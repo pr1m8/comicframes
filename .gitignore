@@ -1,0 +1,740 @@
+# =============================================================================
+# 🧠 Haive AI – Master .gitignore (COMPREHENSIVE VERSION)
+# =============================================================================
+
+# =============================================================================
+# 🚨 CRITICAL: CURSOR/VS CODE HISTORY & TRACKING ISSUES (EMERGENCY FIXES)
+# =============================================================================
+**/.history/
+**/.history
+.history/
+.history
+**/.cursor/
+.cursor/
+**/.vscode/settings.local.json
+.vscode/settings.local.json
+packages/*/.git/
+packages/*/.git
+*/.git/
+!/.git/
+# Prevent any nested git repositories
+*/**/.git/
+# Claude AI specific
+**/.claude/settings.local.json
+.claude/settings.local.json
+scripts/validator_backup_*/
+vscode-wsl-context.reg
+# =============================================================================
+# 💾 Large database dumps and exports (Docker build optimization)
+# =============================================================================
+data_dump.sql
+local_postgres_export.json
+supabase_import_threads.sql
+*.dump
+*.backup
+*.sql.gz
+*.sql.bz2
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+
+# =============================================================================
+# 🧪 Auto-generated agent run folders
+# =============================================================================
+simple_agent_*/
+memory_test_*/
+postgres_test_*/
+summary_agent/
+test_simple_agent/
+output_file.json
+
+# =============================================================================
+# 📝 CLI Tool Logs
+# =============================================================================
+vault_cli_*.log
+logs/vault_cli_*.log
+retrievers_output.json
+agent_run_*/
+test_run_*/
+experiment_*/
+benchmark_*/
+
+# =============================================================================
+# 🔬 Cache / experiment outputs
+# =============================================================================
+.cache/
+.lc_cache/
+src/lc_cache/
+pytest_cache/
+.pytest_cache/
+.mypy_cache/
+.nox/
+.tox/
+htmlcov/
+coverage.xml
+.coverage
+.coverage.*
+dist/
+build/
+.eggs/
+*.egg-info/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =============================================================================
+# 🎮 Game history / graph renderings
+# =============================================================================
+graphs/
+game_history/
+resources/graph_images/
+resources/state_history/
+resources/Graphs/
+resources/State_History/
+resources/State_History/*.json
+resources/game_logs/
+resources/visualization/
+*.gv
+*.dot
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pdf
+*.eps
+
+# =============================================================================
+# 🧰 IDEs and editors
+# =============================================================================
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.spyderproject
+.spyproject
+.ropeproject
+*.swp
+*.swo
+*~
+.#*
+\#*#
+
+# =============================================================================
+# 🔒 Lock, secret, and build files
+# =============================================================================
+poetry.lock
+Pipfile.lock
+*.egg-info/
+*.db
+*.sqlite3
+*.pid
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+token.json
+credentials.json
+service-account*.json
+.env
+.env.*
+!.env.example
+.secrets/
+secrets/
+config/secrets/
+*.secret
+api_keys.txt
+auth_tokens.json
+
+# =============================================================================
+# 📜 Logs, outputs, scratch data
+# =============================================================================
+*.log
+*.err
+*.out
+logs/
+logs/**
+log/
+log/**
+scratches/
+scratches/*.json
+examples/outputs/
+loader_analysis/
+reports/
+out.json
+haive_vault_*.log
+debug_*.txt
+trace_*.json
+profile_*.json
+benchmark_*.json
+
+# =============================================================================
+# 🧬 Misc runtime and temporary files
+# =============================================================================
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.tmp
+*.temp
+tmp/
+temp/
+*.so
+*.pyd
+*.pyo
+*.py[cod]
+Thumbs.db
+.DS_Store
+check_registry_data.py
+BaseAgent.ipynb
+Chinook.db
+*.profraw
+*.prof
+
+# =============================================================================
+# 📦 Node Modules and JavaScript
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm
+.eslintcache
+pnpm-lock.yaml
+# =============================================================================
+# 🧪 Testing, profiling, and development tools
+# =============================================================================
+.pytest_cache/
+.mypy_cache/
+.nox/
+.tox/
+.ipynb_checkpoints/
+.pytest_html/
+viztracer_*.json
+*.prof
+*.profraw
+.benchmarks/
+.hypothesis/
+test_output/
+test_outputs/
+allure-results/
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+.pytest_cache/
+.cache/
+nosetests.xml
+test-results.xml
+
+# =============================================================================
+# 🍃 OS junk and system files
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+*.swp
+*.swo
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# 🐍 Python standard and virtual environments
+# =============================================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv/
+venv/
+ENV/
+env/
+.env/
+env.bak/
+venv.bak/
+pyvenv.cfg
+
+# =============================================================================
+# 📘 Sphinx / documentation
+# =============================================================================
+docs/build/
+docs/_build/
+docs/source/_build/
+docs/source/api/
+docs/scratch/
+_build/
+*.pdf
+*.tex
+sphinx*
+readthedocs-sphinx-search/
+*.rst~
+personal_notes/**/rendered/
+personal_notes/**/*.html
+**/rendered/
+**/_build/
+**/api/
+site/
+_site/
+
+# =============================================================================
+# 🔧 Temporary dev output and resources
+# =============================================================================
+packages/resources/State_History/
+packages/resources/embeddings_cache/
+resources/**/_agent_*/
+resources/**/test_*/
+resources/cache/
+resources/tmp/
+resources/temp/
+resources/scratch/
+resources/experiments/
+resources/benchmarks/
+resources/profiling/
+
+# =============================================================================
+# 🧪 Test logs and auxiliary resources
+# =============================================================================
+test_output/
+test_outputs/
+testing/
+allure-results/
+*.svg
+*.drawio
+tests/persistence_debugging/state_history/
+tests/outputs/
+tests/cache/
+tests/tmp/
+performance_tests/
+load_tests/
+integration_tests/outputs/
+
+# =============================================================================
+# 🧪 Notebooks & dev outputs
+# =============================================================================
+*.ipynb
+.ipynb_checkpoints/
+notebooks/
+notebooks/**
+jupyter_notebook_config.py
+.jupyter/
+.ipython/
+
+# =============================================================================
+# 📦 Python Poetry and package management
+# =============================================================================
+poetry.lock
+.cache/pypoetry/
+.venv/
+poetry.toml
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.coverage
+.pytest_cache/
+.mypy_cache/
+dmypy.json
+.pyre/
+.pytype/
+
+# =============================================================================
+# 🔗 Dependencies and lock files
+# =============================================================================
+Pipfile.lock
+poetry.lock
+package-lock.json
+yarn.lock
+composer.lock
+Gemfile.lock
+go.sum
+Cargo.lock
+requirements-dev.txt.lock
+
+# =============================================================================
+# 🚀 Deployment and CI/CD
+# =============================================================================
+.dockerignore
+Dockerfile.dev
+docker-compose.override.yml
+.kubernetes/
+k8s/
+helm/
+terraform/
+.terraform/
+*.tfstate
+*.tfstate.*
+.env.production
+.env.staging
+.env.development
+
+# =============================================================================
+# 🔐 Security and credentials
+# =============================================================================
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.pfx
+*.keystore
+.ssh/
+credentials/
+secrets/
+.aws/
+.gcp/
+.azure/
+service-account*.json
+*-key.json
+auth-*.json
+token*.txt
+api-key*.txt
+
+# =============================================================================
+# 📊 Analytics and monitoring
+# =============================================================================
+.sentry-env
+.newrelic.ini
+mixpanel.json
+analytics/
+metrics/
+monitoring/
+traces/
+*.trace
+
+# =============================================================================
+# 💽 Databases and data files
+# =============================================================================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.mdb
+*.accdb
+data/
+dataset/
+datasets/
+*.csv.bak
+*.json.bak
+*.parquet
+*.feather
+
+# =============================================================================
+# 🎯 Machine Learning and AI specific
+# =============================================================================
+models/
+*.model
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.onnx
+*.pb
+checkpoints/
+wandb/
+mlruns/
+.mlflow/
+tensorboard_logs/
+lightning_logs/
+.neptune/
+runs/
+
+# =============================================================================
+# 📱 Mobile and platform specific
+# =============================================================================
+.expo/
+.expo-shared/
+*.apk
+*.ipa
+*.dSYM.zip
+*.dSYM
+xcuserdata/
+.build/
+
+# =============================================================================
+# 🌐 Web development
+# =============================================================================
+.next/
+.nuxt/
+.vercel/
+.netlify/
+public/build/
+static/build/
+*.min.js
+*.min.css
+
+# =============================================================================
+# 🧪 Experimental and research
+# =============================================================================
+experiments/
+research/
+prototypes/
+poc/
+sandbox/
+playground/
+draft/
+drafts/
+archive/
+deprecated/
+
+# =============================================================================
+# 📋 Project management
+# =============================================================================
+.project
+.classpath
+.settings/
+.metadata/
+.recommenders/
+target/
+bin/
+
+# =============================================================================
+# 💻 Editor and IDE backups
+# =============================================================================
+*~
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.sw[op]
+.#*
+\#*#
+.*.un~
+Session.vim
+.netrwhist
+
+# =============================================================================
+# 🔄 Version control
+# =============================================================================
+.git/
+.gitattributes.bak
+.gitignore.bak
+.git-rewrite/
+.svn/
+.hg/
+.bzr/
+CVS/
+
+# =============================================================================
+# 📦 Package and distribution
+# =============================================================================
+build/
+dist/
+*.egg-info/
+*.egg
+wheels/
+*.whl
+*.tar.gz
+*.zip
+*.7z
+*.rar
+.secrets/
+.ipynb_checkpoints/
+resources/
+lc_cache/
+# End of .gitignore
+# =============================================================================
+# 📄 Documentation and temporary files cleanup
+# =============================================================================
+# Temporary fix/debug files
+*_FIX*.md
+*_GUIDE*.md
+*_SUMMARY*.md
+*_ANALYSIS*.md
+*_REPORT*.md
+fix_*.py
+debug_*.py
+auto_fix_*.py
+apply_*.py
+analyze_*.py
+create_*.py
+emergency_*.py
+explore_*.py
+implement_*.py
+proper_*.py
+quick_*.py
+safe_*.py
+simple_*.py
+test_*.py
+trace_*.py
+haive_*.py
+*_performance_fix.py
+*_import_fix.py
+*_thread_fix.py
+*_checkpoint_fix.py
+*_config_fix.py
+*_schema_fix.py
+
+# Generated documentation backups
+docs/source/conf_backup*.py
+docs/source/conf_safe.py
+docs/error_reports/
+docs/logs/
+docs/build/
+*_cleanup_*.md
+*_dependencies_*.md
+
+# Notebooks in packages
+/packages/haive-mcp/notebooks/Untitled*.ipynb
+*.ipynb_checkpoints
+notebooks/*.ipynb
+
+# Examples and testing
+examples/multi_agent_showcase.py
+.venv-py312-backup/
+# =============================================================================
+# 🧹 Temporary development files (moved to organized locations)
+# =============================================================================
+# Debug/analysis scripts (moved to scripts/)
+debug_*.py
+analyze_*.py
+fix_*.py
+comprehensive_*.py
+test_*.py
+git_fsck_repair_20250729_213007/
+recovery_catalog/
+# Status/report files (moved to project_docs/)
+*_STATUS*.md
+*_ANALYSIS*.md
+*_RECOVERY*.md
+*_REPORT*.md
+
+# Log and temporary files
+*.log
+nohup.out
+server.log
+dynamic_graph.log
+archive/
+
+# =============================================================================
+# 📚 PyDevelop-Docs and Documentation Build System
+# =============================================================================
+# PyDevelop-Docs configuration and cache
+.pydevelop/
+!.pydevelop/docs.yaml  # Keep the main docs configuration
+.pydevelop/cache/
+.pydevelop/hooks/*.log
+.pydevelop/templates/_build/
+.pydevelop/config.yaml  # Auto-generated config with serialization issues
+
+# Documentation build artifacts
+**/docs/build/
+**/docs/_build/
+**/docs/logs/
+**/docs/autoapi/
+docs/_tags/
+docs/autoapi/
+docs/source/packages/
+docs/source/test-projects/
+docs/source/tutorials/
+docs/source/_static/css/hub.css
+
+# Package-level documentation builds
+packages/*/docs/build/
+packages/*/docs/logs/
+packages/*/docs/autoapi/
+packages/*/docs/_build/
+
+# Root level documentation artifacts
+logs/
+logs/monorepo_build_*.log
+logs/build_*.log
+
+# Sphinx temporary files
+*.rst~
+**/*.rst~
+
+# Build status and temporary analysis files
+haive-agp-analysis.md
+*_analysis.md
+*_status.md
+build-root-docs.sh
+
+# Coverage and quality reports
+.coveragerc
+coveragerc
+.pre-commit-docstring-hooks.yaml
+trunk_docstring_integration.yaml
+
+# Development tools and scripts
+tools/pydevelop-docs/
+scripts/all_docstring_issues_to_fix.md
+scripts/docstring_issues_list.md
+scripts/docstring_pattern_analysis.py
+scripts/dry_run_nested_rst_fix.py
+scripts/examine_docstring_issues.py
+scripts/fix-rst-docstrings.py
+scripts/fix-rst-examples.py
+scripts/fix_preview.txt
+scripts/fix_submodule_docstrings.sh
+scripts/maintenance/cleanup_root_repository.py
+scripts/preview_fixed_conversations.py
+scripts/debug/screenshot_docs.py
+scripts/dev/documentation/
+scripts/dev/quality/
+
+# Quality and backup directories
+quality_fix_backups/
+project_docs/quality_reports/
+project_docs/todo_analysis/
+project_docs/pydevelop_docs/
+project_docs/design/
+project_docs/guides/docstring_formatting_research.md
+project_docs/memory_index/by_date/2025-01-29/
+project_docs/packages/haive-agents/architecture/
+project_docs/packages/haive-agents/guides/
+project_docs/SUBMODULE_MANAGEMENT_README.md
+
+# Test development
+tests/dev/
+
+# Claude AI temporary files
+.claude/settings.local.json.tmp.*
+.claude/settings.local.json.tmp.*/
