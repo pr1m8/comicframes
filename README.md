@@ -1,11 +1,11 @@
 # ComicFrames 🎨🤖
 
-[![PyPI version](https://img.shields.io/pypi/v/comicframes.svg)](https://pypi.org/project/comicframes/)
-[![Python versions](https://img.shields.io/pypi/pyversions/comicframes.svg)](https://pypi.org/project/comicframes/)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/pr1m8/comicframes)
+[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/pypi/dm/comicframes.svg)](https://pypi.org/project/comicframes/)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/pr1m8/comicframes/ci.yml?branch=main)](https://github.com/pr1m8/comicframes/actions)
-[![codecov](https://codecov.io/gh/pr1m8/comicframes/branch/main/graph/badge.svg)](https://codecov.io/gh/pr1m8/comicframes)
+[![Development Status](https://img.shields.io/badge/status-beta-orange.svg)](https://github.com/pr1m8/comicframes)
+[![GitHub stars](https://img.shields.io/github/stars/pr1m8/comicframes?style=social)](https://github.com/pr1m8/comicframes)
+[![GitHub forks](https://img.shields.io/github/forks/pr1m8/comicframes?style=social)](https://github.com/pr1m8/comicframes)
 
 > **🚀 The beginning of bringing comics to life through AI-powered animation**
 
@@ -145,24 +145,36 @@ style_interpolator = ModelFactory.create_model("huggingface/comic-style-preservi
 
 ## Installation
 
-### Using uv (recommended)
+> **📦 PyPI Status**: Package not yet published to PyPI. Install from source for now.
+
+### **🚀 Quick Setup (Development)**
 
 ```bash
-# Install the package in development mode
+# Clone the repository
+git clone https://github.com/pr1m8/comicframes.git
+cd comicframes
+
+# Install with uv (recommended)
 uv pip install -e .
 
-# Or install from the package
-uv pip install comicframes
+# Or install with pip
+pip install -e .
 ```
 
-### Using pip
-
+### **📋 Dependencies**
 ```bash
-# Install the package in development mode
-pip install -e .
+# Core dependencies (automatically installed)
+pymupdf>=1.23.0     # PDF processing
+opencv-python>=4.5.0  # Computer vision
+numpy>=1.21.0       # Numerical operations  
+pillow>=8.0.0       # Image manipulation
+```
 
-# Install dependencies
-pip install -r requirements.txt
+### **🔮 Future PyPI Installation**
+```bash
+# Coming soon - when package is published
+uv pip install comicframes
+pip install comicframes
 ```
 
 ## Usage
@@ -331,12 +343,7 @@ python -m build
 uv pip install dist/comicframes-*.whl
 ```
 
-## Dependencies
 
-- **pymupdf**: PDF processing
-- **opencv-python**: Computer vision and image processing
-- **numpy**: Numerical operations
-- **pillow**: Image manipulation
 
 ## 🗺️ **Development Roadmap: Building the Animation Future**
 
@@ -420,10 +427,10 @@ If you use ComicFrames in your research, please cite:
 
 ## 📊 Stats
 
-![GitHub stars](https://img.shields.io/github/stars/pr1m8/comicframes?style=social)
-![GitHub forks](https://img.shields.io/github/forks/pr1m8/comicframes?style=social)  
-![GitHub issues](https://img.shields.io/github/issues/pr1m8/comicframes)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/pr1m8/comicframes)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/pr1m8/comicframes)
+![GitHub Issues](https://img.shields.io/github/issues/pr1m8/comicframes)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/pr1m8/comicframes)
+![GitHub Contributors](https://img.shields.io/github/contributors/pr1m8/comicframes)
 
 ## License
 
