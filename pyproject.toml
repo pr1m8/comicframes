@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "comicframes"
+version = "0.1.0"
+description = "A Python package for comic book frame detection and processing"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    {name = "Comics Project"},
+]
+keywords = ["comics", "computer-vision", "frame-detection", "pdf-processing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Multimedia :: Graphics",
+]
+dependencies = [
+    "pymupdf>=1.23.0",
+    "numpy>=1.21.0",
+    "opencv-python>=4.5.0",
+    "pillow>=8.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "black>=21.0",
+    "isort>=5.0",
+    "flake8>=3.8",
+]
+
+[project.scripts]
+comicframes-extract = "comicframes.cli:extract_frames_cli"
+comicframes-pdf = "comicframes.cli:pdf_to_images_cli"
+comicframes-pipeline = "comicframes.cli:pipeline_cli"
+comicframes-cache = "comicframes.cli:cache_cli"
+comicframes-models = "comicframes.cli:models_cli"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/comicframes"
+Repository = "https://github.com/yourusername/comicframes"
+Issues = "https://github.com/yourusername/comicframes/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/README.md",
+    "/pyproject.toml",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 88
