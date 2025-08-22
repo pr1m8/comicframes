@@ -12,6 +12,7 @@ class ModelType(Enum):
     FRAME_INTERPOLATION = "frame_interpolation"
     OBJECT_DETECTION = "object_detection"
     SPEECH_BUBBLE_DETECTION = "speech_bubble_detection"
+    CHARACTER_RECOGNITION = "character_recognition"
 
 
 @dataclass
@@ -87,6 +88,37 @@ class ModelRegistry:
                 "method": "threshold",
                 "min_area": 1000,
                 "max_area": 1000000
+            }
+        ))
+        
+        # Hugging Face models (coming soon)
+        self.register_model(ModelConfig(
+            name="huggingface/comic-frame-detection",
+            model_type=ModelType.FRAME_DETECTION,
+            download_url="https://huggingface.co/comicframes/frame-detection-v1",
+            settings={
+                "confidence_threshold": 0.5,
+                "model_id": "comicframes/frame-detection-v1"
+            }
+        ))
+        
+        self.register_model(ModelConfig(
+            name="huggingface/comic-speech-detection", 
+            model_type=ModelType.SPEECH_BUBBLE_DETECTION,
+            download_url="https://huggingface.co/comicframes/speech-bubble-detection-v1",
+            settings={
+                "confidence_threshold": 0.6,
+                "model_id": "comicframes/speech-bubble-detection-v1"
+            }
+        ))
+        
+        self.register_model(ModelConfig(
+            name="huggingface/comic-character-recognition",
+            model_type=ModelType.OBJECT_DETECTION,
+            download_url="https://huggingface.co/comicframes/character-recognition-v1",
+            settings={
+                "confidence_threshold": 0.7,
+                "model_id": "comicframes/character-recognition-v1"
             }
         ))
     

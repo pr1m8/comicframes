@@ -142,6 +142,10 @@ Thumbs.db
 *.swp
 *.swo
 
+# Cursor/VS Code History
+.history/
+**/.history/
+
 # Project specific
 data_samples/*/Augmented_Data/
 external_models/*/output/

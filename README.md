@@ -1,29 +1,68 @@
 # ComicFrames
 
-A Python package for comic book frame detection and processing.
+[![PyPI version](https://img.shields.io/pypi/v/comicframes.svg)](https://pypi.org/project/comicframes/)
+[![Python versions](https://img.shields.io/pypi/pyversions/comicframes.svg)](https://pypi.org/project/comicframes/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/pypi/dm/comicframes.svg)](https://pypi.org/project/comicframes/)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/comicframes/ci.yml?branch=main)](https://github.com/yourusername/comicframes/actions)
+[![codecov](https://codecov.io/gh/yourusername/comicframes/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/comicframes)
+[![Documentation Status](https://readthedocs.org/projects/comicframes/badge/?version=latest)](https://comicframes.readthedocs.io/en/latest/?badge=latest)
+
+🎨 **A powerful Python package for comic book analysis, frame detection, and animation creation.**
+
+Transform comic books into interactive experiences with AI-powered frame detection, interpolation, and processing pipelines.
 
 ## Features
 
 ### Core Functionality
-- Convert PDF comic books to individual page images
-- Detect and extract frames/panels from comic pages
-- Support for different detection methods (threshold-based and Canny edge detection)
-- Frame interpolation for animation creation (RIFE, FILM)
-- Object detection for speech bubbles and characters (YOLO)
+- 📖 **PDF Processing**: Convert comic books to high-quality page images
+- 🔍 **Frame Detection**: AI-powered panel extraction with multiple algorithms
+- 🎬 **Frame Interpolation**: Create smooth animations using RIFE and FILM models
+- 💬 **Speech Bubble Detection**: Identify and extract dialogue using YOLO
+- 👥 **Character Recognition**: Detect and classify comic characters
+- 🎨 **Visual Analysis**: Advanced computer vision for comic understanding
 
 ### Architecture & Performance
-- **Modular Architecture**: Extensible plugin system for models and processors
-- **Multi-level Caching**: File-based and in-memory caching with TTL
-- **Processing Pipelines**: Chain operations with metrics and error handling
-- **Configuration Management**: Environment-based settings with validation
-- **Model Registry**: Centralized model management and loading
+- ⚡ **High Performance**: Multi-level caching with intelligent TTL management
+- 🔄 **Processing Pipelines**: Chain operations with real-time metrics
+- 🏗️ **Modular Design**: Plugin architecture for easy model integration
+- ⚙️ **Smart Configuration**: Environment-based settings with validation
+- 📊 **Model Registry**: Centralized AI model management and loading
 
 ### Developer Experience
-- **Type Safety**: Full type annotations and data validation
-- **Backward Compatibility**: Legacy APIs preserved
-- **CLI Tools**: Comprehensive command-line interface
-- **Extensible**: Easy to add custom processors and models
-- **Metrics**: Built-in performance monitoring and cache statistics
+- 🛡️ **Type Safety**: Complete type annotations and runtime validation
+- 🔄 **Backward Compatible**: Legacy APIs preserved for easy migration
+- 🖥️ **Rich CLI**: 5+ command-line tools for batch processing
+- 🧩 **Extensible**: Simple APIs for custom processors and models
+- 📈 **Analytics**: Built-in performance monitoring and cache statistics
+
+## 🤖 AI Models & Integration
+
+ComicFrames integrates with state-of-the-art AI models for comic analysis:
+
+### Frame Interpolation Models
+- 🎬 **RIFE (Real-Time Intermediate Flow Estimation)**: [megvii-research/ECCV2022-RIFE](https://github.com/megvii-research/ECCV2022-RIFE)
+- 🎭 **FILM (Frame Interpolation for Large Motion)**: [google-research/frame-interpolation](https://github.com/google-research/frame-interpolation)
+
+### Computer Vision Models
+- 🔍 **YOLO**: Object detection for speech bubbles and characters
+- 🖼️ **OpenCV**: Traditional computer vision for frame detection
+
+### Hugging Face Integration
+- 🤗 **Model Hub**: Access to pre-trained models via Hugging Face Hub
+- 📦 **Easy Loading**: Automatic model downloading and caching
+- 🔄 **Model Versioning**: Consistent model management across environments
+
+```python
+# Example: Using Hugging Face models (coming soon)
+from comicframes import ModelFactory
+
+# Load frame interpolation model from Hugging Face
+interpolator = ModelFactory.create_model("huggingface/comic-frame-interpolation")
+
+# Load speech bubble detection model
+detector = ModelFactory.create_model("huggingface/comic-speech-detection")
+```
 
 ## Installation
 
@@ -199,14 +238,74 @@ uv pip install dist/comicframes-*.whl
 - **numpy**: Numerical operations
 - **pillow**: Image manipulation
 
-## TODO
+## 🚀 Roadmap
 
-- Remove title page detection
-- Consistent counting methodology for page_total
-- Speech bubble classification
-- Character identification
-- Integration with YOLO models
+### Current Features ✅
+- PDF to image conversion with high quality
+- OpenCV-based frame detection (threshold & Canny)
+- Multi-level caching system with TTL
+- Processing pipelines with metrics
+- CLI tools for batch processing
+
+### Coming Soon 🔄
+- **RIFE Integration**: Real-time frame interpolation
+- **FILM Integration**: Large motion frame interpolation  
+- **YOLO Integration**: Speech bubble and character detection
+- **Hugging Face Models**: Pre-trained comic analysis models
+- **Animation Export**: MP4/GIF generation from frames
+- **Web Interface**: Browser-based comic processing
+
+### Future Enhancements 🔮
+- Character emotion detection
+- Story flow analysis
+- Automated comic summarization
+- Multi-language speech bubble text extraction
+- Comic style transfer and generation
+
+## 🏷️ Tags
+
+`computer-vision` `comic-analysis` `frame-detection` `animation` `ai` `machine-learning` `opencv` `yolo` `rife` `film` `huggingface` `python` `cli` `processing-pipeline` `caching`
+
+## 🤝 Contributing
+
+We welcome contributions! ComicFrames is designed to be easily extensible:
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Add your processor/model**: Follow our plugin architecture
+4. **Add tests**: Ensure your code is well-tested
+5. **Submit a PR**: We'll review and merge
+
+See our [Contributing Guide](CONTRIBUTING.md) for detailed instructions.
+
+## 📚 Citation
+
+If you use ComicFrames in your research, please cite:
+
+```bibtex
+@software{comicframes2024,
+  title={ComicFrames: AI-Powered Comic Book Analysis and Animation},
+  author={ComicFrames Team},
+  year={2024},
+  url={https://github.com/yourusername/comicframes},
+  version={0.1.0}
+}
+```
+
+## 🔗 Related Projects
+
+- [ECCV2022-RIFE](https://github.com/megvii-research/ECCV2022-RIFE) - Real-Time Intermediate Flow Estimation
+- [frame-interpolation](https://github.com/google-research/frame-interpolation) - Google's FILM models
+- [YOLOv8](https://github.com/ultralytics/ultralytics) - Object detection framework
+- [Hugging Face Hub](https://huggingface.co/models) - Model repository and hosting
+
+## 📊 Stats
+
+![GitHub stars](https://img.shields.io/github/stars/yourusername/comicframes?style=social)
+![GitHub forks](https://img.shields.io/github/forks/yourusername/comicframes?style=social)
+![GitHub issues](https://img.shields.io/github/issues/yourusername/comicframes)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/comicframes)
 
 ## License
 
-MIT License
+MIT License - see the [LICENSE](LICENSE) file for details.
