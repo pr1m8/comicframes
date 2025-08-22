@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "comicframes"
 version = "0.1.0"
-description = "AI-powered comic book analysis with frame detection, interpolation, and animation creation using RIFE, FILM, and YOLO models"
+description = "🎨 The beginning of bringing comics to life through AI-powered animation - starting with robust OpenCV frame detection and evolving into neural network-based interpolation using RIFE, FILM, and YOLO models"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.8"
@@ -79,9 +79,9 @@ comicframes-cache = "comicframes.cli:cache_cli"
 comicframes-models = "comicframes.cli:models_cli"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/comicframes"
-Repository = "https://github.com/yourusername/comicframes"
-Issues = "https://github.com/yourusername/comicframes/issues"
+Homepage = "https://github.com/pr1m8/comicframes"
+Repository = "https://github.com/pr1m8/comicframes"
+Issues = "https://github.com/pr1m8/comicframes/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]

@@ -338,29 +338,47 @@ uv pip install dist/comicframes-*.whl
 - **numpy**: Numerical operations
 - **pillow**: Image manipulation
 
-## 🚀 Roadmap
+## 🗺️ **Development Roadmap: Building the Animation Future**
 
-### Current Features ✅
-- PDF to image conversion with high quality
-- OpenCV-based frame detection (threshold & Canny)
-- Multi-level caching system with TTL
-- Processing pipelines with metrics
-- CLI tools for batch processing
+### **📈 Phase 1: Foundation ✅ (v0.1.0 - Current)**
+**Status**: **Production Ready** - Solid computer vision foundation
+- ✅ **PDF Processing**: PyMuPDF integration for high-quality page extraction
+- ✅ **OpenCV Frame Detection**: Threshold & Canny edge detection algorithms
+- ✅ **Processing Architecture**: Modular pipeline system with caching
+- ✅ **CLI Tools**: 5 command-line utilities for batch processing
+- ✅ **Developer Experience**: Type safety, documentation, testing framework
 
-### Coming Soon 🔄
-- **RIFE Integration**: Real-time frame interpolation
-- **FILM Integration**: Large motion frame interpolation  
-- **YOLO Integration**: Speech bubble and character detection
-- **Hugging Face Models**: Pre-trained comic analysis models
-- **Animation Export**: MP4/GIF generation from frames
-- **Web Interface**: Browser-based comic processing
+### **🚀 Phase 2: Neural Network Integration 🔄 (v0.2.0 - Q1 2024)**  
+**Status**: **In Progress** - Models downloaded, API implementation ongoing
+- 🔄 **RIFE Implementation**: Complete PyTorch model integration (models ready)
+- 🔄 **FILM Implementation**: TensorFlow model wrapper development  
+- 🔄 **YOLO Integration**: Object detection for speech bubbles and characters
+- 🔄 **Model Management**: Enhanced ModelFactory with automatic downloading
+- 🔄 **Performance Optimization**: GPU acceleration and batching support
 
-### Future Enhancements 🔮
-- Character emotion detection
-- Story flow analysis
-- Automated comic summarization
-- Multi-language speech bubble text extraction
-- Comic style transfer and generation
+### **🎬 Phase 3: Animation Generation 🎯 (v0.3.0 - Q2 2024)**
+**Status**: **Planned** - Animation pipeline and export capabilities
+- 🎯 **Frame Interpolation**: Smooth transitions between comic panels
+- 🎯 **Animation Export**: MP4/GIF generation with customizable timing
+- 🎯 **Transition Effects**: Multiple animation styles (smooth, cinematic, dynamic)
+- 🎯 **Batch Animation**: Process entire comic books into animated sequences
+- 🎯 **Quality Controls**: Resolution, frame rate, and compression options
+
+### **🎮 Phase 4: Interactive Experiences 🔮 (v0.4.0 - Q3 2024)**
+**Status**: **Future** - Advanced features and user interfaces
+- 🔮 **Web Interface**: Browser-based comic animation viewer
+- 🔮 **Speech Integration**: Text-to-speech with character voice synthesis
+- 🔮 **Character Tracking**: Persistent character identification across panels
+- 🔮 **Style Transfer**: Artistic style preservation during animation
+- 🔮 **Interactive Timing**: User-controlled pacing and panel transitions
+
+### **🌟 Phase 5: AI-Enhanced Storytelling 🔮 (v1.0.0 - Future)**
+**Status**: **Visionary** - Advanced AI for narrative understanding  
+- 🔮 **Story Analysis**: Automated narrative flow detection
+- 🔮 **Emotion Detection**: Character emotional state recognition
+- 🔮 **Scene Understanding**: Context-aware animation decisions
+- 🔮 **Multi-language**: Global text extraction and voice synthesis
+- 🔮 **Community Models**: Hugging Face Hub integration for specialized models
 
 ## 🏷️ Tags
 
@@ -385,10 +403,11 @@ If you use ComicFrames in your research, please cite:
 ```bibtex
 @software{comicframes2024,
   title={ComicFrames: AI-Powered Comic Book Analysis and Animation},
-  author={ComicFrames Team},
+  author={ComicFrames Project},
   year={2024},
-  url={https://github.com/yourusername/comicframes},
-  version={0.1.0}
+  url={https://github.com/pr1m8/comicframes},
+  version={0.1.0},
+  note={Foundation for neural network-based comic animation}
 }
 ```
 
@@ -401,10 +420,10 @@ If you use ComicFrames in your research, please cite:
 
 ## 📊 Stats
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/comicframes?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/comicframes?style=social)
-![GitHub issues](https://img.shields.io/github/issues/yourusername/comicframes)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/comicframes)
+![GitHub stars](https://img.shields.io/github/stars/pr1m8/comicframes?style=social)
+![GitHub forks](https://img.shields.io/github/forks/pr1m8/comicframes?style=social)  
+![GitHub issues](https://img.shields.io/github/issues/pr1m8/comicframes)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/pr1m8/comicframes)
 
 ## License
 
