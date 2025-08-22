@@ -1,67 +1,146 @@
-# ComicFrames
+# ComicFrames 🎨🤖
 
 [![PyPI version](https://img.shields.io/pypi/v/comicframes.svg)](https://pypi.org/project/comicframes/)
 [![Python versions](https://img.shields.io/pypi/pyversions/comicframes.svg)](https://pypi.org/project/comicframes/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/pypi/dm/comicframes.svg)](https://pypi.org/project/comicframes/)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/comicframes/ci.yml?branch=main)](https://github.com/yourusername/comicframes/actions)
-[![codecov](https://codecov.io/gh/yourusername/comicframes/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/comicframes)
-[![Documentation Status](https://readthedocs.org/projects/comicframes/badge/?version=latest)](https://comicframes.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/pr1m8/comicframes/ci.yml?branch=main)](https://github.com/pr1m8/comicframes/actions)
+[![codecov](https://codecov.io/gh/pr1m8/comicframes/branch/main/graph/badge.svg)](https://codecov.io/gh/pr1m8/comicframes)
 
-🎨 **A powerful Python package for comic book analysis, frame detection, and animation creation.**
+> **🚀 The beginning of bringing comics to life through AI-powered animation**
 
-Transform comic books into interactive experiences with AI-powered frame detection, interpolation, and processing pipelines.
+**ComicFrames** is a foundational Python package for comic book analysis and the **first step toward creating animated storytelling experiences**. Starting with robust frame detection using OpenCV and computer vision, this project is evolving into a complete animation pipeline powered by state-of-the-art neural networks like RIFE, FILM, and YOLO.
 
-## Features
+## 🎯 **Vision: From Static to Animated**
 
-### Core Functionality
-- 📖 **PDF Processing**: Convert comic books to high-quality page images
-- 🔍 **Frame Detection**: AI-powered panel extraction with multiple algorithms
-- 🎬 **Frame Interpolation**: Create smooth animations using RIFE and FILM models
-- 💬 **Speech Bubble Detection**: Identify and extract dialogue using YOLO
-- 👥 **Character Recognition**: Detect and classify comic characters
-- 🎨 **Visual Analysis**: Advanced computer vision for comic understanding
+This project represents the **starting point** of a larger vision: **transforming static comic books into dynamic, animated experiences**. We're building the infrastructure and tools that will eventually power:
 
-### Architecture & Performance
-- ⚡ **High Performance**: Multi-level caching with intelligent TTL management
-- 🔄 **Processing Pipelines**: Chain operations with real-time metrics
-- 🏗️ **Modular Design**: Plugin architecture for easy model integration
-- ⚙️ **Smart Configuration**: Environment-based settings with validation
-- 📊 **Model Registry**: Centralized AI model management and loading
+- 🎬 **Seamless frame interpolation** for smooth panel transitions
+- 🎭 **Character animation** within comic panels  
+- 💬 **Speech bubble dynamics** and text-to-speech integration
+- 🎨 **Style-aware animation** preserving artistic integrity
+- 🎮 **Interactive comic experiences** with user-driven pacing
 
-### Developer Experience
+## 🛠️ **Current Implementation Status**
+
+### ✅ **Production Ready (v0.1.0)**
+- 📖 **PDF Processing**: High-quality comic book to image conversion with PyMuPDF
+- 🔍 **OpenCV Frame Detection**: Two robust methods (threshold & Canny edge detection)
+- 🏗️ **Modular Architecture**: Clean separation with processing pipelines and caching
+- 🖥️ **CLI Tools**: 5 command-line utilities for batch processing
+- ⚡ **Smart Caching**: Multi-level cache system with TTL and performance metrics
 - 🛡️ **Type Safety**: Complete type annotations and runtime validation
-- 🔄 **Backward Compatible**: Legacy APIs preserved for easy migration
-- 🖥️ **Rich CLI**: 5+ command-line tools for batch processing
-- 🧩 **Extensible**: Simple APIs for custom processors and models
-- 📈 **Analytics**: Built-in performance monitoring and cache statistics
 
-## 🤖 AI Models & Integration
+### 🔄 **In Development (Neural Network Integration)**
+- 🎬 **RIFE Integration**: Real-time frame interpolation (models included, implementation ongoing)
+- 🎭 **FILM Integration**: Google's large motion interpolation (setup complete, API in progress)
+- 🔍 **YOLO Detection**: Speech bubble and character detection (config ready, training needed)
+- 🤗 **Hugging Face Pipeline**: Model hub integration for community models
 
-ComicFrames integrates with state-of-the-art AI models for comic analysis:
+### 🎯 **Future Milestones**
+- 🎨 **Animation Export**: MP4/GIF generation from interpolated frames
+- 💬 **Text Analysis**: OCR and speech bubble text extraction
+- 🎮 **Interactive Viewer**: Web-based comic animation player
+- 🎭 **Character Tracking**: Persistent character identification across panels
 
-### Frame Interpolation Models
-- 🎬 **RIFE (Real-Time Intermediate Flow Estimation)**: [megvii-research/ECCV2022-RIFE](https://github.com/megvii-research/ECCV2022-RIFE)
-- 🎭 **FILM (Frame Interpolation for Large Motion)**: [google-research/frame-interpolation](https://github.com/google-research/frame-interpolation)
+## 🧠 **Computer Vision & AI Foundation**
 
-### Computer Vision Models
-- 🔍 **YOLO**: Object detection for speech bubbles and characters
-- 🖼️ **OpenCV**: Traditional computer vision for frame detection
-
-### Hugging Face Integration
-- 🤗 **Model Hub**: Access to pre-trained models via Hugging Face Hub
-- 📦 **Easy Loading**: Automatic model downloading and caching
-- 🔄 **Model Versioning**: Consistent model management across environments
+### **Current OpenCV Implementation**
+ComicFrames currently uses **proven computer vision techniques** for robust frame detection:
 
 ```python
-# Example: Using Hugging Face models (coming soon)
+# Threshold-based detection (clean, geometric panels)
+_, binary = cv2.threshold(gray, 225, 255, cv2.THRESH_BINARY_INV)
+contours, hierarchy = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+# Canny edge detection (complex, artistic layouts)  
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+edges = cv2.Canny(blurred, 10, 200)
+contours = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+```
+
+### **Neural Network Models (Integration Layer Ready)**
+The architecture is **designed for easy model swapping** once neural implementations are complete:
+
+- **🎬 RIFE v4.6**: 130+ FPS frame interpolation (PyTorch models downloaded)
+- **🎭 FILM**: TensorFlow-based large motion interpolation (Google Research)
+- **🔍 YOLOv3**: Real-time object detection (config files ready)
+- **🤗 Hugging Face**: Community model integration via ModelFactory
+
+### **Technical Architecture**
+- **🔧 Plugin System**: Easy model registration and switching
+- **⚡ Caching**: Intelligent model loading and result caching
+- **📊 Metrics**: Performance monitoring for all processing stages
+- **🏗️ Pipelines**: Chain OpenCV → Neural Network → Animation export
+
+## 🎬 **Animation Pipeline Architecture**
+
+### **Stage 1: Foundation (✅ Complete)**
+```python
+from comicframes import pdf_to_images, detect_frames
+
+# Convert comic PDF to high-quality page images
+pdf_to_images("watchmen.pdf", output_dir="./pages")
+
+# Extract individual panels using OpenCV
+frames_detected = detect_frames("./pages/page_1.png", method="threshold")
+```
+
+### **Stage 2: Neural Network Integration (🔄 In Progress)**
+```python
+from comicframes import ModelFactory, ProcessingPipeline
+
+# Create interpolation pipeline (implementation ongoing)
+rife_model = ModelFactory.create_model("rife_v4.6")
+film_model = ModelFactory.create_model("film_net") 
+
+# Chain frame detection → interpolation → animation
+pipeline = ProcessingPipeline("comic_animation")
+pipeline.add_stage(PDFProcessor())
+pipeline.add_stage(FrameProcessor())
+pipeline.add_stage(InterpolationProcessor(rife_model))
+
+result = pipeline.process("comic.pdf")
+```
+
+### **Stage 3: Advanced Animation (🎯 Planned)**
+```python
+# Future API for complete animation generation
+animator = ComicAnimator()
+animator.load_comic("comic.pdf")
+animator.set_transition_style("smooth")  # smooth, cinematic, dynamic
+animator.add_speech_timing("auto")       # auto, manual, voice-sync
+animated_comic = animator.render(output_format="mp4")
+```
+
+## 🔗 **Neural Network Models & Research**
+
+### **🎬 Frame Interpolation Research**
+- **RIFE (ECCV 2022)**: [Real-Time Intermediate Flow Estimation](https://github.com/megvii-research/ECCV2022-RIFE)
+  - ⚡ **130+ FPS** on RTX 3090
+  - 🎯 **State-of-the-art** interpolation quality
+  - ✅ **Models Downloaded** (`external_models/ECCV2022-RIFE/`)
+
+- **FILM (Google Research)**: [Frame Interpolation for Large Motion](https://github.com/google-research/frame-interpolation)
+  - 🎭 **Large motion handling** for dramatic panel transitions
+  - 🧠 **TensorFlow implementation** with pre-trained models
+  - ✅ **Repository Integrated** (`external_models/frame-interpolation/`)
+
+### **🔍 Object Detection & Analysis** 
+- **YOLOv3**: Real-time object detection
+  - 💬 **Speech bubble detection** and text region identification
+  - 👥 **Character detection** for tracking across panels
+  - ✅ **Config Ready** (`external_models/Yolo_Model/`)
+
+### **🤗 Hugging Face Ecosystem**
+```python
+# Future community model integration
 from comicframes import ModelFactory
 
-# Load frame interpolation model from Hugging Face
-interpolator = ModelFactory.create_model("huggingface/comic-frame-interpolation")
-
-# Load speech bubble detection model
-detector = ModelFactory.create_model("huggingface/comic-speech-detection")
+# Load community-trained comic-specific models
+speech_detector = ModelFactory.create_model("huggingface/comic-speech-detection")
+character_classifier = ModelFactory.create_model("huggingface/comic-character-recognition")
+style_interpolator = ModelFactory.create_model("huggingface/comic-style-preserving-interpolation")
 ```
 
 ## Installation
@@ -88,51 +167,72 @@ pip install -r requirements.txt
 
 ## Usage
 
-### As a Python Package
+### **🚀 Quick Start: From Comic to Animated Frames**
 
-#### Legacy API (Backward Compatible)
+#### **Step 1: Basic Frame Detection (Works Now)**
 ```python
-from comicframes import pdf_to_images, extract_and_save_frames
+from comicframes import pdf_to_images, detect_frames
 
-# Convert PDF to images
-pdf_to_images("comic.pdf", output_base_dir="./output")
+# Extract pages from comic PDF
+pdf_to_images("watchmen.pdf", output_base_dir="./pages") 
 
-# Extract frames from a directory of images
-extract_and_save_frames("./pages", "./output")
+# Detect panels using OpenCV computer vision
+total_frames = detect_frames("./pages/page_1.png", 
+                           min_width=100, 
+                           detection_method="threshold")
+
+print(f"Detected {total_frames} panels ready for animation")
 ```
 
-#### New Architecture
+#### **Step 2: Advanced Processing Pipeline**
 ```python
 from comicframes.processing import PDFProcessor, FrameProcessor
 from comicframes.core import ProcessingPipeline
 
-# Create processors
-pdf_processor = PDFProcessor()
-frame_processor = FrameProcessor()
+# Create a complete comic processing pipeline
+pipeline = ProcessingPipeline("comic_analysis")
+pipeline.add_stage(PDFProcessor())      # PDF → Images
+pipeline.add_stage(FrameProcessor())    # Images → Panel detection
 
-# Process individually
-pdf_result = pdf_processor.process("comic.pdf")
-frame_result = frame_processor.process(pdf_result.data[0])
-
-# Or use a pipeline
-pipeline = ProcessingPipeline("comic_processing")
-pipeline.add_stage(pdf_processor)
-pipeline.add_stage(frame_processor)
-
+# Process entire comic book
 result = pipeline.process("comic.pdf")
+print(f"Pipeline processed {len(result.data)} pages")
 ```
 
-#### Configuration and Caching
+#### **Step 3: Performance & Caching**
 ```python
 from comicframes import Settings, get_cache_manager
 
-# Configure settings
-settings = Settings(min_frame_width=100, enable_cache=True)
+# Configure for optimal performance
+settings = Settings(
+    min_frame_width=75,      # Adjust for comic style
+    min_frame_height=100,    # Filter out small panels
+    enable_cache=True        # Cache processing results
+)
 
-# Manage cache
+# Monitor processing performance
 cache = get_cache_manager()
 stats = cache.get_cache_stats()
-cache.clear_all()
+print(f"Cache hit ratio: {stats.hit_ratio:.2%}")
+```
+
+#### **Step 4: Neural Network Integration (Coming Soon)**
+```python
+# Future API - Neural network enhanced processing
+from comicframes import ModelFactory
+from comicframes.models import RIFEInterpolator, FILMInterpolator
+
+# Load state-of-the-art interpolation models
+rife = ModelFactory.create_model("rife_v4.6")      # 130+ FPS interpolation  
+film = ModelFactory.create_model("film_net")       # Large motion handling
+
+# Create smooth panel transitions
+interpolated_frames = rife.interpolate_between_panels(
+    panel_1="frame_001.png",
+    panel_2="frame_002.png",
+    transition_frames=8,        # 8 intermediate frames
+    preserve_style=True         # Maintain comic art style
+)
 ```
 
 ### Command Line Interface
